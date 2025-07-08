@@ -31,6 +31,24 @@ def update_repo(repo_name):
 
     os.chdir(cwd)  # Change back to the original directory
 
+def run_npm_build(repo_name):
+    """
+    Update the specified repository by fetching, checking out the main branch, and pulling the latest changes.
+    
+    Args:
+        repo_name (str): Name of the repository to update
+    """
+    repo_dir = repo_name  # Adjust path if needed
+
+    # Change to the repo directory
+    os.chdir(repo_dir)
+
+    # Run npm build command
+    subprocess.run(["npm", "install"], check=True)
+    subprocess.run(["npm", "run", "build"], check=True)
+
+    os.chdir(cwd)  # Change back to the original directory
+
 def update_moonshot_data():
     repo_dir = "moonshot-data"  # Adjust path if needed
 
